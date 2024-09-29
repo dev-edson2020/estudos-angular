@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ContatoService } from '../services/contato.service';
-import { ContatoModel } from '../models/ContatoModel';
+import { ContatoService } from './../services/contato.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Contato } from '../models/contato.model';
 
 @Component({
   selector: 'app-contato-list',
@@ -9,21 +9,23 @@ import { ContatoModel } from '../models/ContatoModel';
 })
 export class ContatoListComponent implements OnInit {
 
-  @Input() contato!: ContatoModel[];
+  @Input() contatos!: Contato[];
   @Output() editContato = new EventEmitter();
+  @Output() deleteContato = new EventEmitter();
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+
+  edit(contato:Contato){
+    this.editContato.emit(contato)
+  }
+
+  delete(contato:Contato){
+    this.deleteContato.emit(contato)
+  }
   
-
-  contatos: ContatoModel[] | undefined;
-
-  constructor(private contatoSevice: ContatoService) { }
-
-  ngOnInit(): void {    
-     this.getAllContatos();
-  }
-
-  getAllContatos() {
-    this.contatos = this.contatoSevice.getAll();
-  }
 
 
 

@@ -1,6 +1,6 @@
+import { Contato } from './../models/contato.model';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { ContatoModel } from '../models/ContatoModel';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,19 @@ export class ContatoService {
 
   constructor(private localStorage: LocalStorageService) { }
 
-  delete(contato: ContatoModel) {
+  delete(contato: Contato) {
     this.localStorage.remove(contato.id)
   }
 
-  save(contato: ContatoModel) {
+  save(contato: Contato) {
     this.localStorage.set(contato.id, contato);
   }
 
-  getContato(id: string): ContatoModel {
+  getContato(id: string): Contato {
     return this.localStorage.get(id);
   }
 
-  getAll(): ContatoModel[] {
+  getAll(): Contato[] {
     return this.localStorage.keys().map(id => this.getContato(id));
   }
 

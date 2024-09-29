@@ -9,9 +9,20 @@ export class ContatoService {
 
   constructor(private localStorage: LocalStorageService) { }
 
-  save(contato: ContatoModel) {
-    this.localStorage.set(contato.id, JSON.stringify(contato));
+  delete(contato: ContatoModel) {
+    this.localStorage.remove(contato.id)
   }
-  
+
+  save(contato: ContatoModel) {
+    this.localStorage.set(contato.id, contato);
+  }
+
+  getContato(id: string): ContatoModel {
+    return this.localStorage.get(id);
+  }
+
+  getAll(): ContatoModel[] {
+    return this.localStorage.keys().map(id => this.getContato(id));
+  }
 
 }

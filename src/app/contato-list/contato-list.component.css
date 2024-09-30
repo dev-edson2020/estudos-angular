@@ -5,7 +5,3 @@ table td, .table th {
     vertical-align: baseline;
     border-top: 1px solid #dee2e6;
 }
-
-table .tr {
-    color: chartreuse;
-}

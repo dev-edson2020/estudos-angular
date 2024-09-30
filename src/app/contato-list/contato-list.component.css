@@ -1,0 +1,11 @@
+table td, .table th {
+    justify-content: space-between;
+    text-align: center;
+    padding: .75rem;
+    vertical-align: baseline;
+    border-top: 1px solid #dee2e6;
+}
+
+table .tr {
+    color: chartreuse;
+}
